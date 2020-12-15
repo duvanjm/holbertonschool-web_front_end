@@ -215,7 +215,7 @@ ul.row {
 .card-testimonial .card-quote cite {
     display: block;
     padding-top: 1rem;
-    background-color: var(--color-primary);
+    color: var(--color-primary);
 }
 
 .footer {
