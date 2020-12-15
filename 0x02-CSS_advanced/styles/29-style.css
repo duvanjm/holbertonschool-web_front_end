@@ -120,10 +120,10 @@ h6, h5, h4, h3, h2, h1 {
     left: 0;
     background-color: var(--color-white);
     width: 0;
-    height: 20%;
+    height: 0.2rem;
 }
 
-.nav .nav-link .nav-item::before {
+.nav .nav-item:hover .nav-link::before {
     background-color: var(--color-primary);
     width: 100%;
 }
