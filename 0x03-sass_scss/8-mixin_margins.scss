@@ -1,0 +1,9 @@
+/* Margin mixin */
+
+@mixin transform($property) {
+    margin-left: $property;
+    margin-right: $property;
+}
+
+body { @include transform(10px); }
+div { @include transform(15px); }

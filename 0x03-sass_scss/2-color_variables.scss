@@ -1,0 +1,17 @@
+/* assigns the text color The background color */
+
+$text-color: #3D3D3D;
+$background: #6D6D6D;
+
+body {
+    color: $text-color;
+    background-color: $background;
+}
+
+p {
+    columns: $text-color;
+}
+
+h2 {
+    background-color: $background;
+}
