@@ -593,7 +593,7 @@
     flex-direction: column;
   }
 
-  .post-meta-list .strong {
+  .post-meta-list strong {
     color: var(--color-primary);
     font-size: var(--font-size-small);
     text-transform: uppercase;
@@ -612,7 +612,7 @@
   }
 
   /* Tag list
-    ============================= */
+        ============================= */
 
   .tag-list {
     padding: 0;
