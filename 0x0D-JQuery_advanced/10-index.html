@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 1</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <style>
+            .loading {
+                opacity: 0.2;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            window.onload = function() {
+
+                function addPostRow(data) {
+                    $('body').append('<p><span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span></p>')
+                }
+
+                function listPosts() {
+                    $.get("http://localhost:3000/posts").done((posts) => {
+                        for (post of posts) {
+                            addPostRow(post);
+                        }
+                    }).fail(() => {
+                        alert("Server Error");
+                    });
+                }
+
+                listPosts();
+            }
+        </script>
+
+    </body>
+
+</html>
