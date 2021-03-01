@@ -10,6 +10,9 @@
     </head>
 
     <body>
+        <header class="loading" style="opacity: 0.2;">
+
+        </header>
         <script type="text/javascript">
             window.onload = function() {
                 function createSearchForm() {
@@ -51,6 +54,7 @@
                             for (let params of response.query.search) {
                                 addNewArticle(params.pageid, params.title, params.snippet);
                             }
+                            displayLoading(false);
                             buildPagination(response.query.searchinfo.totalhits, 10, offset);
                         }
                     })
@@ -67,6 +71,14 @@
                         .css({ cursor: "pointer", "margin-left": "10px", display: "inline", })
                         .click(() => { queryWikipedia($("input").val(), pageIndex - 1); })
                     );}
+                }
+
+                function displayLoading(loading) {
+                    if (loading) {
+                        $('ul').first().wrap('<div class="loading"></div>');
+                    } else {
+                        $('ul').first().unwrap();
+                    }
                 }
 
                 createSearchForm();
