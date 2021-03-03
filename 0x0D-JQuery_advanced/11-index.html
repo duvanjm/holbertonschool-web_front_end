@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 1</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            window.onload = function() {
+
+                function addPostRow(data) {
+                    let paragr = $("<p>").html("<span>Post created with id " + data.id + ", title: " + data.title + ", author: " + data.author + "</span>");
+
+                    $("body").append(paragr);
+                }
+
+
+                function listPosts() {
+                    $.get("http://localhost:3000/posts").done((posts) => {
+                        for (post of posts) {
+                            addPostRow(post);
+                        }
+                    }).fail(() => {
+                        alert("Server Error");
+                    });
+                }
+
+                function buildForm() {
+                    $('body').append(`
+                        <form>
+                            <div>
+                                <label for="author">Author</label>
+                                <input type="text" id="author"></input>
+                            </div>
+                            <div>
+                                <label for="title">Title</label>
+                                <textarea id="title"></textarea>
+                            </div>
+                            <input type="submit" OnClick{sendForm}></input>
+                        </form>
+                        `
+                    )
+                    $("form").submit(() =>  { sendForm() });
+                }
+
+                function sendForm() {
+                    $("body").append($("<p>").text("About to send the query to the API"))
+                        let params = {
+                        author: $("#author").val(),
+                        title: $("#title").val()
+                    };
+
+                    $.post("http://localhost:3000/posts", params).done((result) => {
+                        addPostRow(result);
+                    }).fail(() => {
+                        alert("Server Error");
+                    });
+
+                    $("#author").val("");
+                    $("#title").val("");
+
+                }
+                buildForm();
+                listPosts();
+            }
+
+        </script>
+
+    </body>
+
+</html>
